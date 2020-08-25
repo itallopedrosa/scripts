@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#Propóo = Backup de Imagens em "/dados-top"
-
+#Propóo = Backup de Logs em "$WILDFLY_HOME/log/"
 
 #START
 set -x
@@ -17,26 +16,17 @@ FILENAME=server.log.$MENOSDAY
 
 # Aqui eu defino o formato do nome do arquivo de backup.
 
-
-
 SRCDIR=/opt/java/wildfly/standalone/
 
 # Local Fonte - onde estãos arquivos a serem feitos backup.
-
-
 
 DESDIR=log/
 
 # Local Destino - onde o Backup seráalvo.
 
-
-
 find $SRCDIR$DESDIR -type f -name '*.bz2' -mtime +30 -exec rm -f {} \;
-
-
 
 $BZIP2 $SRCDIR$DESDIR$FILENAME
 set +x
-
 
 #END
